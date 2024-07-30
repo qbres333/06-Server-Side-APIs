@@ -9,10 +9,10 @@ fetch(requestUrl)
     console.log('Github Repo Issues \n----------');
     console.log(data);
     // TODO: Loop through the response
-    for(let issue of data) {      
-        console.log(issue);      
+    for(let issue of data) {
+     
+      // TODO: Console log each issue's URL and each user's login
+      console.log(issue.url, issue.user.login);
     }
 
-    // TODO: Console log each issue's URL and each user's login
-    console.log()
   });
