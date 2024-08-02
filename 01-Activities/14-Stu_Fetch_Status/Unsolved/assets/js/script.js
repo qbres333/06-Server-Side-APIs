@@ -5,9 +5,12 @@ function getApi(requestUrl) {
   fetch(requestUrl)
     .then(function (response) {
       // Check the console first to see the response.status
-      console.log(response.status);
+      console.log(typeof response.status, response);
       // Then write the conditional based on that response.status value
       // Make sure to display the response on the page
+      if (response.status === 404) {
+        responseText.textContent = `Status code: ${response.status}`
+      }
     })
     .then(function (data) {
       console.log(data);

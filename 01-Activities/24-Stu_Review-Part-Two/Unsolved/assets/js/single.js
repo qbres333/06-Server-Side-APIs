@@ -5,6 +5,7 @@ const limitWarningEl = document.querySelector('#limit-warning');
 const getRepoName = function () {
   // Where is this value coming from?
   // TODO: Write your answer here
+  /** the parameter section of the URL, after the question mark */
   const queryString = document.location.search;
   const repoName = queryString.split('=')[1];
 
@@ -15,6 +16,7 @@ const getRepoName = function () {
   } else {
     // Under what condition will this run?
     // TODO: Write your answer here
+    /** when there's no repoName in the query */
     document.location.replace('./index.html');
   }
 };
@@ -29,7 +31,9 @@ const getRepoIssues = function (repo) {
 
         // What is this checking for? Under what condition will this be `true`?
         // TODO: Write your answer here
-        if (response.headers.get('Link')) {
+        /** if the returned data has a link in the header (i.e. returned data 
+         * has a value), display warning (more than 30 issues) */
+        if (response.headers.get('Link')) {          
           displayWarning(repo);
         }
       });

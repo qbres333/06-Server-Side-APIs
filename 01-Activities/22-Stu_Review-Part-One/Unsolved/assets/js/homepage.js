@@ -22,10 +22,13 @@ const formSubmitHandler = function (event) {
 const buttonClickHandler = function (event) {
   // What is `event.target` referencing?
   // TODO: Write your answer here
+  /* grabs the custom attribute value */
   const language = event.target.getAttribute('data-language');
 
   // Why is this `if` block in place?
   // TODO: Write your answer here
+  /** if we get the language from the data attribute, 
+   * then we make the call. Without the language, it's a blank query */
   if (language) {
     getFeaturedRepos(language);
 
@@ -56,6 +59,8 @@ const getUserRepos = function (user) {
 const getFeaturedRepos = function (language) {
   // What are the query parameters doing here?
   // TODO: Write your answer here
+  /** select the language, combine that parameter with "is featured". 
+   * This helps us filter/narrow results */
   const apiUrl = `https://api.github.com/search/repositories?q=${language}+is:featured&sort=help-wanted-issues`;
 
   fetch(apiUrl).then(function (response) {
@@ -74,6 +79,8 @@ const displayRepos = function (repos, searchTerm) {
     repoContainerEl.textContent = 'No repositories found.';
     // What would happen if there was no `return;` here?
     // TODO: Write your answer here
+    /** if we don't exit out of the scope, we don't have to go 
+     * through later code. Code can run more quickly */
     return;
   }
 
@@ -82,6 +89,7 @@ const displayRepos = function (repos, searchTerm) {
   for (let repoObj of repos) {
     // What is the result of this string concatenation?
     // TODO: Write your answer here
+    /**  */
     const repoName = `${repoObj.owner.login}/${repoObj.name}`;
 
     const repoEl = document.createElement('div');
